@@ -1,0 +1,34 @@
+name: basic_cleaning
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+
+      input_artifact:
+        description: The artifact that we will process as input. For example sample.csv
+        type: string
+
+      output_artifact:
+        description: The name of the resulting artifact. i.e sample_cleaned.csv
+        type: string
+
+      output_type:
+        description: Type for the output artifact.
+        type: string
+
+      output_description:
+        description: The resulting artifact will be a cleaned version of the original input artifact.
+        type: string
+
+      min_price:
+        description: Minimum price to restrict the artifact. i.e 10
+        type: float
+
+      max_price:
+        description: Maximum price to restrict the artifact. i.e 350
+        type: float
+
+
+    command: >-
+        python run.py  --input_artifact {input_artifact}  --output_artifact {output_artifact}  --output_type {output_type}  --output_description {output_description}  --min_price {min_price}  --max_price {max_price} 
